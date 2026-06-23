@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nextland — اقامت و ویزا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1A0F5C;
+  --purple:#2D1B8E;
+  --purple-mid:#4A2BA8;
+  --pink:#E91E8C;
+  --pink-light:#FF6BB5;
+  --gold:#F0C060;
+  --white:#fff;
+  --off-white:#F8F7FF;
+  --text:#1A1040;
+  --text-sec:#5A5480;
+  --border:#E0DCF5;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;right:0;left:0;z-index:1000;
+  background:rgba(26,15,92,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:all .3s;
+}
+.header-inner{
+  max-width:1200px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;height:68px;
+}
+.logo{
+  color:#fff;font-size:22px;font-weight:800;letter-spacing:.5px;
+  text-decoration:none;flex-shrink:0;
+}
+.logo span{color:var(--pink);font-style:italic}
+nav{display:flex;align-items:center;gap:4px;flex-wrap:nowrap}
+nav a{
+  color:rgba(255,255,255,0.8);font-size:12.5px;font-weight:500;
+  text-decoration:none;padding:6px 10px;border-radius:6px;
+  transition:all .2s;white-space:nowrap;
+}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.header-phone{
+  color:var(--gold);font-size:13px;font-weight:700;
+  text-decoration:none;border:1px solid rgba(240,192,96,0.4);
+  padding:7px 14px;border-radius:20px;flex-shrink:0;
+  transition:all .2s;white-space:nowrap;
+}
+.header-phone:hover{background:var(--gold);color:var(--navy)}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn span{display:block;width:22px;height:2px;background:#fff;margin:5px 0;transition:all .3s}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding-top:68px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#0D0830 0%,#1A0F5C 40%,#2D1B8E 70%,#1A0F5C 100%);
+}
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1600&q=80') center/cover;
+  opacity:0.15;
+}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{
+  position:absolute;border-radius:50%;
+  background:var(--pink);opacity:0.15;
+  animation:float linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0)}
+  100%{transform:translateY(-100px) scale(1)}
+}
+.hero-glow{
+  position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(233,30,140,0.15) 0%,transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+.hero-content{position:relative;z-index:1;text-align:center;padding:0 20px;max-width:800px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(233,30,140,0.15);border:1px solid rgba(233,30,140,0.3);
+  color:var(--pink-light);font-size:13px;font-weight:600;
+  padding:6px 16px;border-radius:20px;margin-bottom:24px;
+  animation:fadeDown .8s ease both;
+}
+.hero-title{
+  font-size:clamp(32px,5vw,62px);font-weight:900;
+  color:#fff;line-height:1.2;margin-bottom:20px;
+  animation:fadeDown .8s .1s ease both;
+}
+.hero-title .accent{
+  background:linear-gradient(135deg,var(--pink),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:clamp(15px,2vw,19px);color:rgba(255,255,255,0.75);
+  line-height:1.8;margin-bottom:36px;
+  animation:fadeDown .8s .2s ease both;
+}
+.hero-btns{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  animation:fadeDown .8s .3s ease both;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--pink),#C0157A);
+  color:#fff;font-family:inherit;font-size:15px;font-weight:700;
+  padding:14px 32px;border-radius:50px;border:none;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  box-shadow:0 8px 30px rgba(233,30,140,0.4);
+  transition:all .3s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(233,30,140,0.5)}
+.btn-outline{
+  background:transparent;color:#fff;font-family:inherit;font-size:15px;font-weight:600;
+  padding:13px 32px;border-radius:50px;border:1.5px solid rgba(255,255,255,0.4);
+  cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s;
+}
+.btn-outline:hover{background:rgba(255,255,255,0.1);border-color:#fff}
+.hero-scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.4);font-size:11px;
+  animation:bounce 2s ease-in-out infinite;
+}
+.hero-scroll::after{
+  content:'';display:block;width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== STATS ===== */
+.stats-bar{
+  background:var(--navy);padding:32px 24px;
+}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-item{}
+.stat-num{font-size:32px;font-weight:900;color:var(--pink);line-height:1}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px}
+
+/* ===== SECTIONS ===== */
+section{padding:90px 24px}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-tag{
+  display:inline-block;background:var(--off-white);
+  color:var(--purple);font-size:12px;font-weight:700;
+  padding:5px 14px;border-radius:20px;margin-bottom:14px;
+  letter-spacing:.5px;text-transform:uppercase;
+}
+.sec-title{font-size:clamp(26px,4vw,40px);font-weight:900;color:var(--navy);margin-bottom:14px;line-height:1.25}
+.sec-sub{font-size:16px;color:var(--text-sec);line-height:1.8;max-width:600px}
+
+/* ===== SERVICES ===== */
+#services{background:var(--off-white)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.svc-card{
+  background:#fff;border-radius:20px;padding:30px;
+  border:1px solid var(--border);
+  transition:all .3s;position:relative;overflow:hidden;cursor:pointer;
+}
+.svc-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  opacity:0;transition:opacity .3s;
+}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(45,27,142,0.15)}
+.svc-card:hover::before{opacity:1}
+.svc-card>*{position:relative;z-index:1}
+.svc-card:hover .svc-icon,.svc-card:hover .svc-name,.svc-card:hover .svc-desc,.svc-card:hover .svc-badge{color:#fff!important}
+.svc-card:hover .svc-icon-wrap{background:rgba(255,255,255,0.15)}
+.svc-icon-wrap{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--off-white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin-bottom:18px;transition:all .3s;
+}
+.svc-badge{
+  display:inline-block;background:rgba(233,30,140,0.1);
+  color:var(--pink);font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:20px;margin-bottom:10px;transition:all .3s;
+}
+.svc-name{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:10px;transition:all .3s}
+.svc-desc{font-size:13px;color:var(--text-sec);line-height:1.7;transition:all .3s}
+.svc-features{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.svc-feat{font-size:12.5px;color:var(--text-sec);display:flex;align-items:center;gap:6px;transition:all .3s}
+.svc-feat::before{content:'✔';color:var(--pink);font-size:11px;flex-shrink:0;transition:all .3s}
+.svc-card:hover .svc-feat{color:rgba(255,255,255,0.85)}
+.svc-card:hover .svc-feat::before{color:var(--gold)}
+.svc-card.featured{
+  background:linear-gradient(135deg,var(--navy),var(--purple));
+  border-color:transparent;
+}
+.svc-card.featured .svc-icon-wrap{background:rgba(255,255,255,0.1)}
+.svc-card.featured .svc-badge{background:rgba(240,192,96,0.2);color:var(--gold)}
+.svc-card.featured .svc-name{color:#fff}
+.svc-card.featured .svc-desc{color:rgba(255,255,255,0.75)}
+.svc-card.featured .svc-feat{color:rgba(255,255,255,0.75)}
+.svc-card.featured .svc-feat::before{color:var(--gold)}
+.svc-card.featured:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(233,30,140,0.3)}
+
+/* ===== WHY US ===== */
+#why{background:#fff}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.why-list{display:flex;flex-direction:column;gap:20px}
+.why-item{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px;border-radius:16px;
+  background:var(--off-white);
+  border:1px solid var(--border);
+  transition:all .3s;
+}
+.why-item:hover{border-color:var(--purple);box-shadow:0 8px 24px rgba(45,27,142,0.08);transform:translateX(-4px)}
+.why-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.why-text h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.why-text p{font-size:13px;color:var(--text-sec);line-height:1.6}
+.why-visual{
+  background:linear-gradient(135deg,var(--navy),var(--purple));
+  border-radius:24px;padding:36px;color:#fff;
+  position:relative;overflow:hidden;
+}
+.why-visual::before{
+  content:'';position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(233,30,140,0.15);
+  top:-100px;left:-100px;
+}
+.why-visual-title{font-size:22px;font-weight:800;margin-bottom:24px;position:relative}
+.why-checklist{display:flex;flex-direction:column;gap:14px;position:relative}
+.why-check{display:flex;align-items:center;gap:12px;font-size:14px}
+.why-check-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(240,192,96,0.2);border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--gold);flex-shrink:0;
+}
+
+/* ===== STEPS ===== */
+#steps{background:var(--off-white)}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:24px;margin-top:48px;
+}
+.step-card{
+  background:#fff;border-radius:20px;padding:28px;
+  border:1px solid var(--border);position:relative;
+  transition:all .3s;
+}
+.step-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(45,27,142,0.1);border-color:var(--purple)}
+.step-num{
+  position:absolute;top:24px;left:24px;
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  color:#fff;font-size:14px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-icon{font-size:32px;margin-bottom:14px;margin-top:8px}
+.step-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--text-sec);line-height:1.7}
+
+/* ===== TEAM ===== */
+#team{background:#fff}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.team-card{
+  background:var(--off-white);border-radius:20px;padding:28px;text-align:center;
+  border:1px solid var(--border);transition:all .3s;
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(45,27,142,0.1)}
+.team-avatar{
+  width:80px;height:80px;border-radius:50%;margin:0 auto 16px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;color:#fff;font-weight:800;
+  border:3px solid #fff;
+  box-shadow:0 8px 20px rgba(45,27,142,0.2);
+}
+.team-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.team-role{font-size:13px;color:var(--pink);font-weight:600;margin-bottom:10px}
+.team-desc{font-size:12.5px;color:var(--text-sec);line-height:1.6}
+
+/* ===== CTA ===== */
+.cta-section{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--purple) 50%,#4A2BA8 100%);
+  padding:90px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;
+  width:500px;height:500px;border-radius:50%;
+  background:rgba(233,30,140,0.1);
+  top:-200px;right:-100px;
+}
+.cta-section::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:rgba(240,192,96,0.08);
+  bottom:-150px;left:-100px;
+}
+.cta-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.cta-title{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;margin-bottom:14px;line-height:1.25}
+.cta-sub{font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:32px;line-height:1.8}
+.cta-phone{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--gold);color:var(--navy);
+  font-family:inherit;font-size:18px;font-weight:800;
+  padding:16px 36px;border-radius:50px;text-decoration:none;
+  box-shadow:0 8px 30px rgba(240,192,96,0.4);
+  transition:all .3s;
+}
+.cta-phone:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(240,192,96,0.5)}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--off-white);padding:80px 24px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px;background:#fff;border-radius:14px;
+  border:1px solid var(--border);
+}
+.contact-item-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.contact-item-text p:first-child{font-size:12px;color:var(--text-sec);margin-bottom:2px}
+.contact-item-text a,.contact-item-text p:last-child{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none}
+.contact-item-text a:hover{color:var(--pink)}
+.contact-form{background:#fff;border-radius:20px;padding:32px;border:1px solid var(--border)}
+.contact-form h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:var(--text-sec);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:11px 14px;
+  border:1.5px solid var(--border);border-radius:10px;
+  font-family:inherit;font-size:14px;color:var(--text);
+  background:#fff;outline:none;transition:border .2s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--purple)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{
+  width:100%;padding:13px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  color:#fff;font-family:inherit;font-size:15px;font-weight:700;
+  border:none;border-radius:10px;cursor:pointer;transition:all .3s;
+}
+.form-submit:hover{opacity:.9;transform:translateY(-1px)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy);padding:40px 24px;text-align:center}
+.footer-inner{max-width:900px;margin:0 auto}
+.footer-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:12px}
+.footer-logo span{color:var(--pink);font-style:italic}
+.footer-text{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:16px}
+.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+
+/* ===== MOBILE ===== */
+.mobile-menu{
+  display:none;position:fixed;inset:0;top:68px;
+  background:var(--navy);z-index:999;
+  padding:24px;flex-direction:column;gap:4px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  color:#fff;font-size:15px;font-weight:500;
+  text-decoration:none;padding:14px 16px;border-radius:10px;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.mobile-menu a:hover{background:rgba(255,255,255,0.07)}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  nav,.header-phone{display:none}
+  .menu-btn{display:block}
+  .services-grid,.why-grid,.steps-grid,.team-grid,.contact-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .hero-title{font-size:32px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#" class="logo"><img src="data:image/png;base64,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" alt="Nextland" style="height:40px;width:40px;object-fit:contain;margin-left:8px;vertical-align:middle">Next<span>land</span></a>
+    <nav>
+      <a href="#services">اقامت نومد اسپانیا</a>
+      <a href="#services">تمکن مالی اسپانیا</a>
+      <a href="#services">ویزا شنگن</a>
+      <a href="#services">ویزا کانادا</a>
+      <a href="#services">ویزا انگلیس</a>
+      <a href="#services">خدمات تحصیلی</a>
+      <a href="#why">درباره ما</a>
+    </nav>
+    <a href="tel:02122554127" class="header-phone">📞 021-22554127</a>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="منو">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">🏠 اقامت نومد اسپانیا</a>
+  <a href="#services" onclick="toggleMenu()">💰 تمکن مالی اسپانیا</a>
+  <a href="#services" onclick="toggleMenu()">✈️ ویزا شنگن</a>
+  <a href="#services" onclick="toggleMenu()">🍁 ویزا کانادا</a>
+  <a href="#services" onclick="toggleMenu()">🇬🇧 ویزا انگلیس</a>
+  <a href="#services" onclick="toggleMenu()">🎓 خدمات تحصیلی</a>
+  <a href="#why" onclick="toggleMenu()">ℹ️ درباره ما</a>
+  <a href="tel:02122554127">📞 021-22554127</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ متخصص اقامت و ویزا اروپا</div>
+    <h1 class="hero-title">
+      آینده‌ای بدون مرز<br>
+      <span class="accent">با Nextland</span>
+    </h1>
+    <p class="hero-sub">با بهره‌گیری از دانش به‌روز مهاجرتی و تجربه بین‌المللی،<br>مسیر اخذ ویزا، اقامت و پذیرش تحصیلی را برای شما هموار می‌کنیم.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">مشاوره رایگان بگیرید</a>
+      <a href="#services" class="btn-outline">خدمات ما</a>
+    </div>
+  </div>
+  <div class="hero-scroll">اسکرول کنید</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">۵۰۰+</div>
+      <div class="stat-label">پرونده موفق</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">۶</div>
+      <div class="stat-label">کشور تحت پوشش</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">۴+</div>
+      <div class="stat-label">سال تجربه</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">۹۵٪</div>
+      <div class="stat-label">نرخ موفقیت</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-inner">
+    <span class="sec-tag reveal">خدمات ما</span>
+    <h2 class="sec-title reveal">راهکارهای تخصصی مهاجرتی</h2>
+    <p class="sec-sub reveal">از اقامت اسپانیا تا ویزای تحصیلی اروپا — هر مسیری که انتخاب کنید، همراه شما هستیم.</p>
+
+    <div class="services-grid">
+
+      <!-- نومد -->
+      <div class="svc-card featured reveal">
+        <div class="svc-icon-wrap">🌍</div>
+        <span class="svc-badge">⭐ پرطرفدارترین</span>
+        <div class="svc-name">اقامت دیجیتال نومد اسپانیا</div>
+        <div class="svc-desc">مناسب فریلنسرها و شاغلان از راه دور با حداقل درآمد ۲۰۰۰ یورو. یکی از سریع‌ترین روش‌های اقامت قانونی اروپا برای متقاضی و خانواده.</div>
+        <div class="svc-features">
+          <div class="svc-feat">بررسی رایگان شرایط پرونده</div>
+          <div class="svc-feat">تشکیل پرونده تخصصی</div>
+          <div class="svc-feat">پشتیبانی تا دریافت کارت اقامت</div>
+          <div class="svc-feat">شرایط تضمینی برای واجدین</div>
+        </div>
+      </div>
+
+      <!-- تمکن مالی -->
+      <div class="svc-card reveal">
+        <div class="svc-icon-wrap">💎</div>
+        <span class="svc-badge">⭐ تضمینی</span>
+        <div class="svc-name">اقامت تمکن مالی اسپانیا</div>
+        <div class="svc-desc">مناسب افرادی که از درآمد یا سرمایه کافی برخوردارند و قصد زندگی در اسپانیا بدون نیاز به اشتغال را دارند.</div>
+        <div class="svc-features">
+          <div class="svc-feat">بررسی تمکن مالی و شرایط</div>
+          <div class="svc-feat">آماده‌سازی مدارک مالی</div>
+          <div class="svc-feat">اخذ اقامت برای خانواده</div>
+        </div>
+      </div>
+
+      <!-- شنگن -->
+      <div class="svc-card reveal">
+        <div class="svc-icon-wrap">✈️</div>
+        <span class="svc-badge">ویزا</span>
+        <div class="svc-name">ویزای توریستی شنگن</div>
+        <div class="svc-desc">اخذ ویزای شنگن از سفارتخانه‌های اروپایی با بررسی دقیق و آماده‌سازی حرفه‌ای مدارک.</div>
+        <div class="svc-features">
+          <div class="svc-feat">مشاوره تخصصی</div>
+          <div class="svc-feat">تعیین وقت سفارت</div>
+          <div class="svc-feat">افزایش شانس موفقیت</div>
+        </div>
+      </div>
+
+      <!-- کانادا -->
+      <div class="svc-card reveal">
+        <div class="svc-icon-wrap">🍁</div>
+        <span class="svc-badge">ویزا</span>
+        <div class="svc-name">ویزای توریستی کانادا</div>
+        <div class="svc-desc">ارزیابی تخصصی پرونده و ثبت درخواست ویزا با رعایت آخرین استانداردهای مهاجرتی.</div>
+        <div class="svc-features">
+          <div class="svc-feat">بررسی سوابق سفر و مالی</div>
+          <div class="svc-feat">تکمیل پرونده و ثبت درخواست</div>
+          <div class="svc-feat">پشتیبانی تا اعلام نتیجه</div>
+        </div>
+      </div>
+
+      <!-- انگلیس -->
+      <div class="svc-card reveal">
+        <div class="svc-icon-wrap">🇬🇧</div>
+        <span class="svc-badge">ویزا</span>
+        <div class="svc-name">ویزای توریستی انگلستان</div>
+        <div class="svc-desc">خدمات کامل اخذ ویزای توریستی انگلستان برای سفرهای تفریحی، خانوادگی و تجاری.</div>
+        <div class="svc-features">
+          <div class="svc-feat">بررسی شرایط متقاضی</div>
+          <div class="svc-feat">آماده‌سازی مدارک</div>
+          <div class="svc-feat">ثبت و پیگیری درخواست</div>
+        </div>
+      </div>
+
+      <!-- تحصیلی -->
+      <div class="svc-card reveal">
+        <div class="svc-icon-wrap">🎓</div>
+        <span class="svc-badge">⭐ تضمین پذیرش</span>
+        <div class="svc-name">خدمات تحصیلی بین‌المللی</div>
+        <div class="svc-desc">اخذ پذیرش در معتبرترین دانشگاه‌های فنلاند، انگلستان، هلند، آلمان، اتریش و اسپانیا با تضمین برای واجدین شرایط.</div>
+        <div class="svc-features">
+          <div class="svc-feat">انتخاب رشته و دانشگاه</div>
+          <div class="svc-feat">نگارش انگیزه‌نامه و رزومه</div>
+          <div class="svc-feat">اخذ ویزای دانشجویی</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="sec-inner">
+    <div class="why-grid">
+      <div>
+        <span class="sec-tag reveal">چرا Nextland؟</span>
+        <h2 class="sec-title reveal">همراه مطمئن شما<br>در مسیر مهاجرت</h2>
+        <div class="why-list">
+          <div class="why-item reveal">
+            <div class="why-icon">🎯</div>
+            <div class="why-text">
+              <h4>ارزیابی تخصصی رایگان</h4>
+              <p>قبل از هر تصمیمی، شرایط پرونده شما را به‌صورت رایگان بررسی می‌کنیم.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">🔒</div>
+            <div class="why-text">
+              <h4>راهکارهای قانونی و به‌روز</h4>
+              <p>تمام خدمات ما بر اساس آخرین قوانین مهاجرتی ارائه می‌شود.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">🤝</div>
+            <div class="why-text">
+              <h4>پشتیبانی کامل تا پایان</h4>
+              <p>از اولین مشاوره تا دریافت کارت اقامت، همراه شما هستیم.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">⭐</div>
+            <div class="why-text">
+              <h4>شفافیت و مسئولیت‌پذیری</h4>
+              <p>در هر مرحله از پرونده‌تان را به‌صورت کامل مطلع می‌کنیم.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <div class="why-visual-title">خدمات ویژه و تضمینی ✦</div>
+        <div class="why-checklist">
+          <div class="why-check"><div class="why-check-icon">⭐</div>اقامت اسپانیا از طریق دیجیتال نومد</div>
+          <div class="why-check"><div class="why-check-icon">⭐</div>تضمین اخذ پذیرش تحصیلی اروپا</div>
+          <div class="why-check"><div class="why-check-icon">⭐</div>اخذ ویزا توریستی اروپا، انگلیس، کانادا</div>
+          <div class="why-check"><div class="why-check-icon">⭐</div>اقامت اسپانیا از طریق تمکن مالی</div>
+        </div>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.15)">
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:8px">برای مشاوره رایگان تماس بگیرید</div>
+          <a href="tel:02122554127" style="color:var(--gold);font-size:20px;font-weight:800;text-decoration:none">021-22554127</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section id="steps">
+  <div class="sec-inner">
+    <span class="sec-tag reveal">فرآیند کار</span>
+    <h2 class="sec-title reveal">مسیر اقامت شما</h2>
+    <p class="sec-sub reveal">از اولین تماس تا دریافت کارت اقامت، هر مرحله را با هم طی می‌کنیم.</p>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">۱</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">مشاوره و ارزیابی رایگان</div>
+        <div class="step-desc">شرایط پرونده شما بررسی و مناسب‌ترین مسیر اقامتی پیشنهاد می‌شود.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">۲</div>
+        <div class="step-icon">📝</div>
+        <div class="step-title">عقد قرارداد</div>
+        <div class="step-desc">پس از توافق، قرارداد شفاف و مشخص با تعهدات کامل منعقد می‌شود.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">۳</div>
+        <div class="step-icon">👥</div>
+        <div class="step-title">تشکیل کارگروه تخصصی</div>
+        <div class="step-desc">تیم اختصاصی شامل مدیر پرونده، وکیل اسپانیایی و کارشناس اجرا تعیین می‌شود.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">۴</div>
+        <div class="step-icon">📁</div>
+        <div class="step-title">تکمیل و بررسی مدارک</div>
+        <div class="step-desc">مدارک با راهنمایی تخصصی آماده و توسط وکیل اسپانیایی تایید می‌شود.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">۵</div>
+        <div class="step-icon">🏛️</div>
+        <div class="step-title">ثبت پرونده در اداره مهاجرت</div>
+        <div class="step-desc">پرونده در اداره مهاجرت اسپانیا ثبت و پیگیری می‌شود.</div>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">۶</div>
+        <div class="step-icon">🎉</div>
+        <div class="step-title">دریافت کارت اقامت</div>
+        <div class="step-desc">پس از طی مراحل، کارت اقامت اسپانیا برای شما و خانواده صادر می‌شود.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-content reveal">
+    <h2 class="cta-title">آینده‌ای جهانی را از امروز آغاز کنید</h2>
+    <p class="cta-sub">از ویزا تا اقامت؛ همراه مطمئن شما در مسیر مهاجرت، تحصیل و زندگی بین‌المللی.</p>
+    <a href="tel:02122554127" class="cta-phone">📞 021-22554127</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-inner">
+    <span class="sec-tag reveal">تماس با ما</span>
+    <h2 class="sec-title reveal">همین امروز شروع کنید</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <p>تلفن تماس</p>
+            <a href="tel:02122554127">021-22554127</a>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <p>آدرس دفتر</p>
+            <p>تهران، پاسداران، گلستان ۴، پلاک ۱۷۹</p>
+          </div>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">🌐</div>
+          <div class="contact-item-text">
+            <p>وبسایت</p>
+            <a href="https://nextland.vip">nextland.vip</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3>درخواست مشاوره رایگان</h3>
+        <div class="form-group">
+          <label>نام و نام خانوادگی</label>
+          <input type="text" placeholder="نام شما">
+        </div>
+        <div class="form-group">
+          <label>شماره موبایل</label>
+          <input type="tel" placeholder="09...">
+        </div>
+        <div class="form-group">
+          <label>خدمت مورد نظر</label>
+          <select>
+            <option>اقامت دیجیتال نومد اسپانیا</option>
+            <option>اقامت تمکن مالی اسپانیا</option>
+            <option>ویزای شنگن</option>
+            <option>ویزای کانادا</option>
+            <option>ویزای انگلستان</option>
+            <option>خدمات تحصیلی</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>توضیحات</label>
+          <textarea placeholder="شرح مختصری از وضعیت خود بنویسید..."></textarea>
+        </div>
+        <button class="form-submit">ارسال درخواست مشاوره</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="data:image/png;base64,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" alt="Nextland" style="height:36px;width:36px;object-fit:contain;margin-left:8px;vertical-align:middle;filter:brightness(10)">Next<span>land</span></div>
+    <p class="footer-text">متخصص اقامت و ویزا — اسپانیا و اروپا</p>
+    <div class="footer-links">
+      <a href="#services">خدمات</a>
+      <a href="#why">درباره ما</a>
+      <a href="#steps">مراحل کار</a>
+      <a href="#contact">تماس</a>
+      <a href="tel:02122554127">021-22554127</a>
+    </div>
+    <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:20px">© ۱۴۰۴ Nextland — تمامی حقوق محفوظ است</p>
+  </div>
+</footer>
+
+<script>
+// Particles
+(function(){
+  var container = document.getElementById('particles');
+  for(var i=0;i<20;i++){
+    var p = document.createElement('div');
+    p.className = 'particle';
+    var size = Math.random()*6+3;
+    p.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;animation-duration:'+(Math.random()*15+8)+'s;animation-delay:'+(-Math.random()*15)+'s;opacity:'+(Math.random()*0.15+0.05);
+    container.appendChild(p);
+  }
+})();
+
+// Scroll reveal
+var reveals = document.querySelectorAll('.reveal');
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+},{threshold:0.1});
+reveals.forEach(function(r){ observer.observe(r); });
+
+// Mobile menu
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Header scroll
+window.addEventListener('scroll',function(){
+  var h = document.getElementById('header');
+  if(window.scrollY > 50){
+    h.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+  } else {
+    h.style.boxShadow = 'none';
+  }
+});
+
+// Form submit
+document.querySelector('.form-submit').addEventListener('click', function(){
+  var name = document.querySelector('input[placeholder="نام شما"]').value.trim();
+  var phone = document.querySelector('input[placeholder="09..."]').value.trim();
+  var service = document.querySelector('select').value;
+  var desc = document.querySelector('textarea').value.trim();
+
+  if (!name || !phone) {
+    alert('لطفاً نام و شماره موبایل را وارد کنید.');
+    return;
+  }
+
+  var btn = document.querySelector('.form-submit');
+  btn.textContent = 'در حال ارسال...';
+  btn.disabled = true;
+
+  var text = '🔔 درخواست مشاوره جدید\n\n'
+    + '👤 نام: ' + name + '\n'
+    + '📱 موبایل: ' + phone + '\n'
+    + '🎯 خدمت: ' + service + '\n'
+    + '📝 توضیحات: ' + (desc || '-') + '\n\n'
+    + '🌐 از سایت nextland.vip';
+
+  var token = '8269895263:AAEe8pBD82Rt8rBy-dDyvfLSPBv7Kzk-ZS8';
+  var chatId = '63050806';
+  var url = 'https://api.telegram.org/bot' + token + '/sendMessage';
+
+  fetch(url, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({chat_id: chatId, text: text})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(res){
+    if (res.ok) {
+      btn.textContent = '✅ ارسال شد!';
+      btn.style.background = 'linear-gradient(135deg,#0F6E56,#1A9B7A)';
+      document.querySelector('input[placeholder="نام شما"]').value = '';
+      document.querySelector('input[placeholder="09..."]').value = '';
+      document.querySelector('textarea').value = '';
+      setTimeout(function(){
+        btn.textContent = 'ارسال درخواست مشاوره';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    } else {
+      btn.textContent = 'خطا — دوباره امتحان کنید';
+      btn.disabled = false;
+    }
+  })
+  .catch(function(){
+    btn.textContent = 'خطا — دوباره امتحان کنید';
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
